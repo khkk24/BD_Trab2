@@ -6,11 +6,21 @@
 #include <stdlib.h>
 
 typedef struct no{
-    int vertice;
-    int arestas;
+    int *vertice;
+    int *arestas;
     struct no *prox;
 }no;
 
+typedef struct escalonamento{
+    char *operacao;
+}esc;
+
+typedef struct operacao{
+    int tc;
+    int id;
+    char op;
+    char att;
+}operacao;
 
 
 
