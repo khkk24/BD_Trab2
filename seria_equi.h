@@ -16,10 +16,10 @@ typedef struct escalonamento{
 }esc;
 
 typedef struct operacao{
-    int tc;
-    int id;
-    char op;
-    char att;
+    int *tc;
+    int *id;
+    char *op;
+    char *att;
 }operacao;
 
 

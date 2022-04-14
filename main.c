@@ -13,29 +13,68 @@ int main (int argc, char *argv[])
     operacao *o;
     no *n;
     esc *e;
-    int i = 0;
+    
+    int t=0,i = 0;
+    int cont = 0,j=0,k=1;
+    int vet[20];
+    int v[5];
+    int vet_commit[10];
+    int tp;
     n = malloc(sizeof(no));
     e = malloc(sizeof(esc));
-    while(fscanf(stdin, "%d %d %c %c ",&tc,&id_trans,&oper,&atr) !=EOF)
+    o = (operacao*)malloc(sizeof(operacao));
+    int cont_op=0;
+    int a=0;
+    int tamp=0;
+    
+    o->tc = malloc(sizeof(int));
+    o->id = malloc(sizeof(int));
+    o->op = malloc(sizeof(char));
+    o->att = malloc(sizeof(char));
+    n->vertice = malloc(sizeof(int));
+    n->vertice = 0;
+    
+    while(fscanf(stdin, "%d %d %c %c",&tc,&id_trans,&oper,&atr) !=EOF)
     {
-        o->tc = tc;
-        o->id = id_trans;
-        o->op = oper;
-        o->att = atr;
-
-        n->vertice[i] = o->id;
-        e->operacao[i] = o->op;
-
-
-        if (o->tc != 1)
-        {
-            if (o->id[i-1]  )
-        }
-        i++;
-
         
+            o->tc[i] = tc;
+            o->id[i] = id_trans;
+            o->op[i] = oper;
+            o->att[i] = atr;
 
+        vet[i]= o->id[i];
+        //tamp =o->id[i];
+        if(o->op[i] == 'C')
+        {
+            vet_commit[a]=o->tc[i];
+            cont_op ++;
+            a++;
+        }
+        else if(o->id[i] > tamp)
+        {
+            tamp = o->id[i];
+        }
+        i++;       
 
     }
+
+
+    // testes de seriabilidade
+    while (k <= tamp)
+    {
+       n->vertice[k] = k;
+       k++; 
+    }
+
+    for ( j = 0; j < a; j++)
+    {
+        /* code */printf("%d\t",vet_commit[j]);
+    }
+    printf("\n");
+    printf("cont = %d\n",cont_op);
+    printf("tamp = %d\n",tamp);
+    
+    
+    
     saida = freopen(argv[2], "w", stdout );
 }
